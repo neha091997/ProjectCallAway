@@ -1,0 +1,67 @@
+<template>
+  
+  <lightning-card>
+     <div class="slds-m-around_large">
+         <div if:true={isLoaded} class="slds-is-relative">
+            <lightning-spinner
+                alternative-text="Loading..." variant="brand">
+            </lightning-spinner>
+        </div>
+    </div>
+    <center>
+    <lightning-combobox class="dropdown"
+            name="progress"
+            label="State"
+            value={statevalue}
+            placeholder="Select State"
+            options={stateoptions}
+            onchange={handleChangeState} ></lightning-combobox>
+    
+    
+    <p>Selected value is: {value}</p>
+         <lightning-combobox class="dropdown"
+            name="progress"
+            label="City"
+            value={cityvalue}
+            placeholder="Select City"
+            options={cityoptions}
+            onchange={handleChangeCity} ></lightning-combobox>
+    
+    <lightning-button variant="brand" label="Search" title="Search" onclick={handleSearchHospital} disabled={getActive}></lightning-button>
+    <lightning-button variant="brand" label="Check Id" title="Search" onclick={CheckIds} ></lightning-button>
+    </center>
+        <div style="height:100px;width:100px;">
+ <lightning-carousel>
+        <lightning-carousel-image
+            src={Abulance_pic_s}
+       >
+        </lightning-carousel-image>
+        <lightning-carousel-image
+            src={appointmnt_pic_s}
+    >
+        </lightning-carousel-image>
+        <lightning-carousel-image 
+            src={hospital_pic_s} 
+       >
+        </lightning-carousel-image>
+    </lightning-carousel>
+        </div>
+    </center>
+    <template if:true={ShowData}>
+    <lightning-datatable
+        key-field="id"
+        data={Hospitals}
+        columns={Hospitalcolumns}
+        onrowaction={callRowAction} >
+    </lightning-datatable>
+
+    </template>
+       <!-- <template for:each={Hospitals} for:item="Hospital">
+         <p key={Hospital.Id}>
+           {Hospital.Name}
+         </p>
+   
+        </template> -->
+
+</lightning-card>
+</template>
