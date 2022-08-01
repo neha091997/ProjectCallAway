@@ -88,7 +88,7 @@ export default class InformationSearchPage extends NavigationMixin(LightningElem
             .then((result) => {
                this.Hospitals = result
                this.ShowData = true
-              // window.alert(result);
+            
             })
 }
     }
